@@ -1,0 +1,161 @@
+{
+    "index_name": "hotels-quickstart",
+    "fields": {
+        "simple_fields": [
+            {
+                "name": "HotelId",
+                "type": "String",
+                "analyzer_name": null,
+                "facetable": null,
+                "filterable": null,
+                "sortable": null,
+                "key": true
+            },
+            {
+                "name": "ParkingIncluded",
+                "type": "Boolean",
+                "analyzer_name": null,
+                "facetable": null,
+                "filterable": null,
+                "sortable": null,
+                "key": false
+            },
+            {
+                "name": "LastRenovationDate",
+                "type": "DateTimeOffset",
+                "analyzer_name": null,
+                "facetable": true,
+                "filterable": true,
+                "sortable": true,
+                "key": false
+            },
+            {
+                "name": "Rating",
+                "type": "Double",
+                "analyzer_name": null,
+                "facetable": true,
+                "filterable": true,
+                "sortable": true,
+                "key": false
+            }
+        ],
+        "seachable_fields": [
+            {
+                "name": "HotelName",
+                "type": "String",
+                "analyzer_name": null,
+                "facetable": null,
+                "filterable": null,
+                "sortable": true,
+                "key": false
+            },
+            {
+                "name": "Description",
+                "type": "String",
+                "analyzer_name": "en.lucene",
+                "facetable": null,
+                "filterable": null,
+                "sortable": null,
+                "key": false
+            },
+            {
+                "name": "Description_fr",
+                "type": "String",
+                "analyzer_name": "fr.lucene",
+                "facetable": null,
+                "filterable": null,
+                "sortable": null,
+                "key": false
+            },
+            {
+                "name": "Category",
+                "type": "String",
+                "analyzer_name": null,
+                "facetable": true,
+                "filterable": true,
+                "sortable": true,
+                "key": false
+            },
+            {
+                "name": "Tags",
+                "type": "String",
+                "analyzer_name": null,
+                "facetable": true,
+                "filterable": true,
+                "sortable": null,
+                "key": false
+            }
+        ],
+        "complex_fields": [
+            {
+                "name": "Address",
+                "fields": [
+                    {
+                        "name": "StreetAddress",
+                        "type": "String",
+                        "analyzer_name": null,
+                        "facetable": null,
+                        "filterable": null,
+                        "sortable": null,
+                        "key": false
+                    },
+                    {
+                        "name": "City",
+                        "type": "String",
+                        "analyzer_name": null,
+                        "facetable": true,
+                        "filterable": true,
+                        "sortable": true,
+                        "key": false
+                    },
+                    {
+                        "name": "StateProvince",
+                        "type": "String",
+                        "analyzer_name": null,
+                        "facetable": true,
+                        "filterable": true,
+                        "sortable": true,
+                        "key": false
+                    },
+                    {
+                        "name": "PostalCode",
+                        "type": "String",
+                        "analyzer_name": null,
+                        "facetable": true,
+                        "filterable": true,
+                        "sortable": true,
+                        "key": false
+                    },
+                    {
+                        "name": "Country",
+                        "type": "String",
+                        "analyzer_name": null,
+                        "facetable": true,
+                        "filterable": true,
+                        "sortable": true,
+                        "key": false
+                    }
+                ]
+            }
+        ]
+    },
+    "semantic_config": {
+        "name": "my-semantic-config",
+        "prioritized_fields": {
+            "title_field": "HotelName",
+            "prioritized_keywords_fields": ["Category"],
+            "prioritized_content_fields": ["Description"]
+        }
+    },
+    "suggestor": [
+        {
+            "name": "sg",
+            "source_fields": ["Address/City", "Address/Country"]
+        }
+    ],
+    "cors": {
+        "allowed_origins": ["*"],
+        "max_age_in_seconds": 60
+    }
+}
+
